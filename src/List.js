@@ -1,24 +1,30 @@
 import React from 'react'
+import movies from './data/movies.json'
+import ListItem from './Components/ListItem'
+import Form from './Components/Form'
 
 class List extends React.Component {
-    constructor(){
+    constructor() {
         super()
 
         this.state = {
-            movies:[]
+            movies: movies
         }
     }
 
 
-    render(){
-        return(
-            <div className ='App'>
-                <h1 className ='movie-list-title'>The Most Amazing Movie List</h1>
-                <List/>
+    render() {
+        const movieDisplay = this.state.movies.map(function (movie, index) {
+            return <ListItem key={index} movie={movie} />
+        })
+        return (
+            <div className='List'>
+                <Form />
+                {movieDisplay}
             </div>
         )
     }
-}   
-
+}
+export default List
 
 
